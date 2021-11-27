@@ -22,6 +22,8 @@
   --footer-social-link-color: rgba(255, 255, 255, 0.1);
   --lable-background-color: rgba(47, 48, 58, 0.8);
   --description-background-color: rgba(33, 150, 243, 0.9);
+  --backdrop-color: rgba(0, 0, 0, 0.2);
+  --buttom-close-color: rgba(0, 0, 0, 0.1);
 }
 body {
   font-family: 'Roboto', sans-serif;
@@ -72,7 +74,6 @@ section {
   padding-left: 15px;
   padding-right: 15px;
   width: 1200px;
-  /*outline: 2px solid rgb(16, 92, 179);*/
 }
 
 /*-----------------------HEADER--------------------*/
@@ -119,7 +120,7 @@ section {
 }*/
 
 .header-link {
-  display: block;
+  /* display: block;*/
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
@@ -130,10 +131,22 @@ section {
   transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  /*bottom: -1px;*/
 }
 .header-link:hover,
 .header-link:focus {
   color: var(--accent-color);
+}
+.header-link.current::after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  position: absolute;
+  border-radius: 2px;
+  left: 0;
+  bottom: 0;
 }
 /*------------------------------------------------------*/
 
@@ -658,6 +671,7 @@ section {
 
 .description-overlay {
   position: absolute;
+  overflow: auto;
 
   top: 0;
   left: 0;
@@ -722,4 +736,50 @@ section {
 .port-img {
   width: 370px;
   height: 294px;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: opacity 250ms, visibility 250ms;
+}
+
+.backdrop.is-hidden .modal {
+  transform: scale(1.5) rotate(270deg);
+}
+
+.modal {
+  width: 528px;
+  min-height: 581px;
+  background-color: var(--body-background-color);
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(1) rotate(0) translate(-50%, -50%);
+  transition: transform 250ms;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid var(--buttom-close-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
