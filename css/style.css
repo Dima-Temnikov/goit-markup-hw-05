@@ -20,6 +20,8 @@
   --social-icons-color: #afb1b8;
   --footer-contact-color: rgba(255, 255, 255, 0.6);
   --footer-social-link-color: rgba(255, 255, 255, 0.1);
+  --lable-background-color: rgba(47, 48, 58, 0.8);
+  --description-background-color: rgba(33, 150, 243, 0.9);
 }
 body {
   font-family: 'Roboto', sans-serif;
@@ -280,8 +282,9 @@ section {
   justify-content: center;
 }
 
-.www-item {
+.wwd-item {
   display: block;
+  position: relative;
 }
 
 .wwd-item:not(:last-child) {
@@ -293,6 +296,27 @@ section {
   height: auto;
   /*width: 370px;
   height: 294px;*/
+}
+.lable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  background-color: var(--lable-background-color);
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--adress-text-color);
+
+  /*border: 1px solid tomato;*/
 }
 
 /*-----------------------TEAM--------------------*/
@@ -604,12 +628,16 @@ section {
   color: var(--button-color);
   background-color: var(--accent-color);
 }
+
+/*------------PORTFOLIO-----------*/
+
 .port-list {
   display: flex;
   flex-wrap: wrap;
 }
 
 .port-list-item {
+  /* position: relative;*/
   width: 370px;
   margin-right: 30px;
   margin-bottom: 30px;
@@ -618,6 +646,41 @@ section {
   transition-property: box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.overlay-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-box:hover .description-overlay {
+  transform: translateY(0);
+}
+
+.description-overlay {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 63px 24px;
+
+  transform: translateY(100%);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--portfolio-border-color);
+  background-color: var(--description-background-color);
 }
 .port-list-item:hover,
 .port-list-item:focus {
@@ -637,6 +700,7 @@ section {
   display: block;
 }
 .port-block {
+  /*position: absolute;*/
   padding: 20px 24px;
 }
 
