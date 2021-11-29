@@ -103,7 +103,6 @@ section {
   display: block;
   width: 145px;
   height: 31px;
-  /* outline: solid 1px tomato;*/
 }
 
 .header-list {
@@ -114,10 +113,6 @@ section {
 .header-list .header-item:not(:last-child) {
   margin-right: 50px;
 }
-
-/*.header-item {
-  outline: solid 1px tomato;
-}*/
 
 .header-link {
   /* display: block;*/
